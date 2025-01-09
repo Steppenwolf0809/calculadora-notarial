@@ -1,0 +1,140 @@
+{
+  "transferencia_dominio": [
+    "Pago del impuesto predial del año actual y el año anterior",
+    "Certificado de gravámenes actualizado",
+    "Hoja de rentas del municipio",
+    "Pago de impuestos: Alcabala, Plusvalía, Consejo Provincial",
+    "Ficha catastral",
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación de los comparecientes (vendedores y compradores)",
+    "Minuta de abogada/o"
+  ],
+  "poder_persona_natural": [
+    "Minuta de abogado",
+    "Original y copia a color de la Cédula de ciudadanía y Certificado de votación del compareciente"
+  ],
+  "poder_persona_juridica": [
+    "Minuta de abogado",
+    "Original y copia a color de la Cédula de ciudadanía y Certificado de votación del representante legal",
+    "Nombramiento del representante legal",
+    "RUC de la empresa"
+  ],
+  "hipoteca": [
+    "Minuta de abogado",
+    "Original y copia a color de la cédula de ciudadanía y Certificado de votación de los comparecientes",
+    "Nombramiento o poder del Acreedor Hipotecario (En caso de ser Institución Bancaria)",
+    "Certificado de Gravámenes actualizado"
+  ],
+  "testamento": [
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación del testador",
+    "Información clara sobre los bienes a distribuir",
+    "Nombres completos y números de cédula de los beneficiarios",
+    "Tres testigos con sus respectivas cédulas de identidad (para testamento abierto)",
+    "Certificado médico reciente que acredite la capacidad mental del testador (recomendado)"
+  ],
+  "declaracion_juramentada": [
+    "Petición de abogada/o",
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación del declarante",
+    "Documentos de respaldo de la declaración (si aplica)"
+  ],
+  "autorizacion_salida_pais": [
+    "Petición de abogada/o",
+    "Partida de nacimiento (en algunos casos)",
+    "Copia a color de cédula del menor de edad o menores de edad",
+    "Original y copia a color de la Cédula de ciudadanía y Certificado de votación del padre o padres que autorizan la salida del menor"
+  ],
+  "divorcio": [
+    "Formulario emitido por el Consejo de la Judicatura",
+    "Partida de matrimonio",
+    "Poder en caso de ausencia del compareciente",
+    "Si hay hijos menores de edad es necesario que previamente se hayan solucionado la tenencia, alimentos y visitas"
+  ],
+  "constitucion_hipotecas_abiertas": [
+    "Minuta de abogado",
+    "Original y copia a color de la cédula de ciudadanía y Certificado de votación de los comparecientes",
+    "Nombramiento o poder del Acreedor Hipotecario (En caso de ser Institución Bancaria)",
+    "Certificado de Gravámenes actualizado"
+  ],
+  "promesa_compraventa": [
+    "Minuta de abogado",
+    "Certificado de gravámenes",
+    "Ficha catastral",
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación de los comparecientes"
+  ],
+  "reconocimiento_firma": [
+    "2 Originales firmados de los documentos",
+    "Copias a color de la Cédula de Ciudadanía y Certificado de Votación"
+  ],
+  "protocolizacion": [
+    "Petición de Abogado",
+    "Documento original a protocolizarse"
+  ],
+  "adjudicacion": [
+    "Minuta de abogado",
+    "Pago del impuesto predial del año actual y el año anterior",
+    "Certificado de gravámenes actualizado",
+    "Hoja de rentas del municipio",
+    "Pago de impuestos: Alcabala, Plusvalía, Consejo Provincial",
+    "Ficha catastral",
+    "Acta del directorio de Autorización de Adjudicación",
+    "Original y copia a color de Cédula y Certificado de Votación de los comparecientes"
+  ],
+  "inscripcion_contratos_arrendamiento": [
+    "3 Ejemplares del contrato en original",
+    "Originales y copias de arrendador y arrendatario",
+    "Pago de impuesto predial o documento que justifique la calidad de propietario del arrendador",
+    "Poder (en caso de que uno de los contratantes esté representado por otra persona)"
+  ],
+  "union_hecho": [
+    "Petición de abogada/o",
+    "Partida/s de nacimiento/s de los hijos (si los hay)",
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación de los comparecientes"
+  ],
+  "disolucion_sociedad_conyugal": [
+    "Petición de abogada/o",
+    "Partida de Matrimonio",
+    "Original y copia a color de la Cédula de ciudadanía y Certificado de votación de los comparecientes"
+  ],
+  "posesion_efectiva": [
+    "Petición de abogada/o",
+    "Partida de defunción del causante",
+    "Partida de Matrimonio del causante (Si hay cónyuge sobreviviente)",
+    "Partidas de nacimiento (íntegras) de todos los herederos",
+    "Copias a color de las Cédulas de Ciudadanía y Certificados de Votación de todos los herederos",
+    "Información sobre los bienes dejados por el causante (opcional, pero recomendado)"
+  ],
+  "reconocimiento_firma_vehiculo": [
+    "2 contratos de compraventa llenos y firmados con color azul",
+    "Original y copia a color de la Cédula de ciudadanía y Certificado de votación de los comparecientes (vendedor y comprador)",
+    "Original y copia a color de la matrícula del vehículo",
+    "Certificado Único Vehicular actualizado"
+  ],
+  "compraventa_vehiculo": [
+    "2 contratos de compraventa llenos y firmados con color azul",
+    "Original y copia a color de la Cédula de ciudadanía y Certificado de votación de los comparecientes (vendedor y comprador)",
+    "Original y copia a color de la matrícula del vehículo",
+    "Certificado Único Vehicular actualizado"
+  ],
+  "liquidacion_sociedad_conyugal": [
+    "Minuta del Abogado",
+    "Partida de Matrimonio Marginada",
+    "Pago del impuesto predial del año actual y el año anterior",
+    "Certificado de gravámenes actualizado",
+    "Hoja de rentas del municipio",
+    "Pago de impuestos: Alcabala, Plusvalía, Consejo Provincial",
+    "Ficha catastral",
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación de los comparecientes",
+    "Minuta de abogada/o"
+  ],
+  "garantia_economica": [
+    "Minuta de Abogado",
+    "Original y copia a color de la Cédula de Ciudadanía y Certificado de Votación del compareciente",
+    "Documentos que respalden la garantía económica (si aplica)"
+  ],
+  "baja_inventarios": [
+    "Minuta de abogado",
+    "Firma de representante legal, bodeguero y contador de la empresa",
+    "Cédulas, nombramiento y RUC",
+    "Listado de bienes que se dan de baja",
+    "Dependiendo de la naturaleza de los bienes pueden existir otros requisitos"
+  ]
+}
