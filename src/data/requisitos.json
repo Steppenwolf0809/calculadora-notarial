@@ -102,7 +102,13 @@
     "Copias a color de las Cédulas de Ciudadanía y Certificados de Votación de todos los herederos",
     "Información sobre los bienes dejados por el causante (opcional, pero recomendado)"
   ],
-  "reconocimiento_firma_vehiculo": [
+  "materializacion": [
+    "Documento electrónico original (PDF)",
+    "Firma electrónica válida en el documento",
+    "Petición para ingresar al correo electrónico",
+    "Copia de cédula de ciudadanía"
+  ],
+  "reconocimiento_vehiculo": [
     "2 contratos de compraventa llenos y firmados con color azul",
     "Original y copia a color de la Cédula de ciudadanía y Certificado de votación de los comparecientes (vendedor y comprador)",
     "Original y copia a color de la matrícula del vehículo",

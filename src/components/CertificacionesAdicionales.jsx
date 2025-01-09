@@ -6,8 +6,8 @@ const TIPOS_CERTIFICACION = {
     tarifa: 1.79
   },
   DOC_ELECTRONICO: {
-    nombre: 'Certificación de documentos materializados de soporte electrónico',
-    tarifa: 2.00
+    nombre: 'Materialización de documentos electrónicos (por hoja)',
+    tarifa: 1.34
   },
   FIRMA_REGISTRADA: {
     nombre: 'Certificación de firma registrada de funcionarios',

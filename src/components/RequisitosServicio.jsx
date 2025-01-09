@@ -1,49 +1,42 @@
 import requisitos from '../data/requisitos.json';
 
-const MAPEO_SERVICIOS = {
-  'transferenciaDominio': 'transferencia_dominio',
-  'poder_natural': 'poder_persona_natural',
-  'poder_juridico': 'poder_persona_juridica',
-  'hipotecas': 'hipoteca',
-  'testamento': 'testamento',
-  'declaracion': 'declaracion_juramentada',
-  'union_hecho': 'union_hecho',
-  'divorcio': 'divorcio',
-  'promesas': 'promesa_compraventa'
-};
-
 export default function RequisitosServicio({ tipoServicio }) {
-  const servicioKey = MAPEO_SERVICIOS[tipoServicio];
-  
-  if (!servicioKey || !requisitos[servicioKey]) {
-    return null;
-  }
+  // Mapeo de tipos de servicio a las claves en requisitos.json
+  const MAPEO_REQUISITOS = {
+    'transferenciaDominio': 'transferencia_dominio',
+    'hipotecas': 'hipoteca',
+    'promesas': 'promesa_compraventa',
+    'poder_natural': 'poder_persona_natural',
+    'poder_juridico': 'poder_persona_juridica',
+    'declaracion': 'declaracion_juramentada',
+    'testamento': 'testamento',
+    'divorcio': 'divorcio',
+    'union_hecho': 'union_hecho',
+    'reconocimiento_vehiculo': 'reconocimiento_vehiculo',
+    'protocolizacion': 'protocolizacion',
+    'autorizacion_salida': 'autorizacion_salida_pais',
+    'posesion_efectiva': 'posesion_efectiva',
+    'disolucion_sociedad': 'disolucion_sociedad_conyugal',
+    'garantia_economica_natural': 'garantia_economica',
+    'garantia_economica_juridica': 'garantia_economica',
+    'baja_inventarios': 'baja_inventarios'
+  };
+
+  const claveRequisitos = MAPEO_REQUISITOS[tipoServicio];
+  const requisitosServicio = requisitos[claveRequisitos] || [];
 
   return (
-    <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-      <h3 className="text-lg font-semibold text-blue-900 mb-4">
-        Requisitos Necesarios
-      </h3>
-      <ul className="space-y-2">
-        {requisitos[servicioKey].map((requisito, index) => (
-          <li key={index} className="flex items-start text-sm text-blue-800">
-            <svg 
-              className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M9 5l7 7-7 7" 
-              />
-            </svg>
-            {requisito}
-          </li>
-        ))}
-      </ul>
+    <div>
+      <h3 className="text-lg font-semibold text-gray-800 mb-4">Requisitos</h3>
+      {requisitosServicio.length > 0 ? (
+        <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
+          {requisitosServicio.map((requisito, index) => (
+            <li key={index}>{requisito}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-gray-500 italic">No hay requisitos específicos definidos para este servicio.</p>
+      )}
     </div>
   );
 }

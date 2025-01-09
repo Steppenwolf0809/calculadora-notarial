@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import Calculadora from './components/Calculadora'
 import Certificaciones from './components/Certificaciones'
-import Requisitos from './components/Requisitos'
 
 const TABS = {
   CALCULADORA: 'calculadora',
-  CERTIFICACIONES: 'certificaciones',
-  REQUISITOS: 'requisitos'
+  CERTIFICACIONES: 'certificaciones'
 };
 
 function App() {
@@ -41,14 +39,12 @@ function App() {
         <div className="flex justify-center space-x-4 mb-6">
           <TabButton tab={TABS.CALCULADORA} label="Calculadora" />
           <TabButton tab={TABS.CERTIFICACIONES} label="Certificaciones" />
-          <TabButton tab={TABS.REQUISITOS} label="Requisitos" />
         </div>
         
         {/* Contenido */}
         <div className="max-w-4xl mx-auto">
           {tabActiva === TABS.CALCULADORA && <Calculadora />}
           {tabActiva === TABS.CERTIFICACIONES && <Certificaciones />}
-          {tabActiva === TABS.REQUISITOS && <Requisitos />}
         </div>
         
         <footer className="mt-12 text-center text-sm text-gray-500">
