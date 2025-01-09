@@ -1,21 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary-color: #0066cc;
+  --secondary-color: #004d99;
+  --accent-color: #ff9900;
+  --text-color: #333333;
+  --background-color: #f5f5f5;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.calculator-numbers {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-logo {
+  height: 60px;
+  width: auto;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  background-color: var(--primary-color);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.input-field {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  font-family: 'Roboto', sans-serif;
+}
+
+.select-field {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.card {
+  @apply bg-white p-6 rounded-lg shadow-sm;
+}
+
+/* Estilos específicos para números y montos */
+.amount {
+  font-family: 'Roboto', sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
 }

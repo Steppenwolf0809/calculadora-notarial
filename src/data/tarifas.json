@@ -1,0 +1,102 @@
+{
+  "remuneracionBasica": 470.00,
+  "iva": 0.15,
+  "tablas": {
+    "transferenciaDominio": {
+      "rangos": [
+        {"min": 0, "max": 10000, "tarifa": 94.00},
+        {"min": 10001, "max": 30000, "tarifa": 164.50},
+        {"min": 30001, "max": 60000, "tarifa": 235.00},
+        {"min": 60001, "max": 90000, "tarifa": 376.00},
+        {"min": 90001, "max": 150000, "tarifa": 634.50},
+        {"min": 150001, "max": 300000, "tarifa": 940.00},
+        {"min": 300001, "max": 600000, "tarifa": 1880.00},
+        {"min": 600001, "max": 1000000, "tarifa": 2350.00},
+        {"min": 1000001, "max": 2000000, "tarifa": 4700.00},
+        {"min": 2000001, "max": 3000000, "tarifa": 7050.00},
+        {"min": 3000001, "max": 4000000, "tarifa": 9400.00}
+      ],
+      "excedente": {
+        "limite": 4000000,
+        "formula": {
+          "base": "20SBU",
+          "porcentajeExcedente": 0.001
+        }
+      }
+    },
+    "hipotecas": {
+      "rangos": [
+        {"min": 0, "max": 10000, "tarifa": 61.10},
+        {"min": 10001, "max": 30000, "tarifa": 126.90},
+        {"min": 30001, "max": 60000, "tarifa": 169.20},
+        {"min": 60001, "max": 90000, "tarifa": 253.80},
+        {"min": 90001, "max": 150000, "tarifa": 338.40},
+        {"min": 150001, "max": 300000, "tarifa": 592.20},
+        {"min": 300001, "max": 600000, "tarifa": 846.00},
+        {"min": 600001, "max": 1000000, "tarifa": 1057.50},
+        {"min": 1000001, "max": 2000000, "tarifa": 2115.00},
+        {"min": 2000001, "max": 3000000, "tarifa": 3172.50},
+        {"min": 3000001, "max": 4000000, "tarifa": 4230.00}
+      ],
+      "excedente": {
+        "limite": 4000000,
+        "formula": {
+          "base": "9SBU",
+          "porcentajeExcedente": 0.001
+        }
+      }
+    },
+    "promesas": {
+      "rangos": [
+        {"min": 0, "max": 10000, "tarifa": 70.50},
+        {"min": 10001, "max": 30000, "tarifa": 117.50},
+        {"min": 30001, "max": 60000, "tarifa": 164.50},
+        {"min": 60001, "max": 90000, "tarifa": 282.00},
+        {"min": 90001, "max": 150000, "tarifa": 423.00},
+        {"min": 150001, "max": 300000, "tarifa": 658.00},
+        {"min": 300001, "max": 600000, "tarifa": 1316.00},
+        {"min": 600001, "max": 1000000, "tarifa": 1645.00},
+        {"min": 1000001, "max": 2000000, "tarifa": 3290.00},
+        {"min": 2000001, "max": 3000000, "tarifa": 4935.00},
+        {"min": 3000001, "max": 4000000, "tarifa": 6580.00}
+      ],
+      "excedente": {
+        "limite": 4000000,
+        "formula": {
+          "base": "14SBU",
+          "porcentajeExcedente": 0.001
+        }
+      }
+    }
+  },
+  "serviciosIndeterminados": {
+    "poderes": {
+      "personaNatural": {"tarifa": 56.40, "otorganteAdicional": 14.10},
+      "personaJuridica": {"tarifa": 235.00}
+    },
+    "declaracionesJuramentadas": {
+      "personaNatural": {"tarifa": 23.50, "otorganteAdicional": 14.10},
+      "personaJuridica": {"tarifa": 56.40}
+    },
+    "autorizacionSalidaPais": {"tarifa": 23.50},
+    "reconocimientoFirma": {"tarifa": 14.10},
+    "testamentoAbierto": {"tarifa": 564.00},
+    "testamentoCerrado": {"tarifa": 470.00},
+    "unionHecho": {"tarifa": 47.00},
+    "disolucionSociedadConyugal": {"tarifa": 159.80}
+  },
+  "descuentos": {
+    "viviendaSocial": {
+      "aplicaHasta": 60000,
+      "porcentaje": 0.25
+    },
+    "adultoMayor": {
+      "unilaterales": 1.00,
+      "bilaterales": 0.50
+    },
+    "discapacidad": {
+      "unilaterales": 1.00,
+      "bilaterales": 0.50
+    }
+  }
+}
