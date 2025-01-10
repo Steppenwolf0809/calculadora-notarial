@@ -1,40 +1,161 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Abogados Online Ecuador - Documentación Técnica
 
-## Getting Started
+## Información Técnica Base
 
-First, run the development server:
+### Tecnologías y Frameworks
+- **Frontend Framework:** Next.js 15.1.3
+- **React:** v19.0.0
+- **UI Components:**
+  - Headless UI (@headlessui/react v2.2.0)
+  - Hero Icons (@heroicons/react v2.2.0)
+  - Lucide Icons (lucide-react v0.469.0)
+- **Styling:** TailwindCSS v3.4.1
+- **Media Processing:**
+  - Sharp (v0.33.5) - Optimización de imágenes
+  - Fluent-ffmpeg (v2.1.3) - Procesamiento de video
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Estructura de Carpetas
+```
+abogados-online/
+├── public/               # Archivos estáticos
+│   ├── brand/           # Logos e imágenes de marca
+│   ├── fonts/           # Fuentes personalizadas
+│   ├── images/          # Imágenes del sitio
+│   └── videos/          # Videos de fondo y contenido
+├── scripts/             # Scripts de utilidad
+│   ├── optimize-media.js    # Optimización de medios
+│   └── extract-poster.js    # Extracción de posters de video
+├── src/
+│   ├── components/      # Componentes React
+│   ├── config/         # Configuraciones
+│   ├── data/           # Datos estáticos (JSON)
+│   ├── pages/          # Páginas y rutas
+│   └── styles/         # Estilos CSS
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Requisitos del Sistema
+- Node.js 18.x o superior
+- NPM 9.x o superior
+- FFmpeg (para procesamiento de video)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Detalles de Implementación
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Calculadora Notarial
+- Ubicación: `src/components/NotaryCalculator.jsx`
+- Datos de tarifas: `src/data/tarifas.json`
+- Funcionalidades:
+  - Cálculo de costos notariales
+  - Selección de servicios
+  - Cálculo de certificaciones adicionales
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Componentes Principales
+1. **Header (`src/components/Header.jsx`)**
+   - Navegación responsive
+   - Efectos de scroll
+   - Menú móvil
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Hero Section (`src/components/HeroSection.jsx`)**
+   - Video de fondo adaptativo
+   - Optimización para móviles
+   - Efectos de paralaje
 
-## Learn More
+3. **Formulario de Citas (`src/components/AppointmentForm.jsx`)**
+   - Validación de datos
+   - Integración con WhatsApp
 
-To learn more about Next.js, take a look at the following resources:
+### Scripts de Optimización
+1. **optimize-media.js**
+   - Compresión de imágenes
+   - Optimización de videos
+   - Generación de formatos responsivos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+2. **extract-poster.js**
+   - Extracción de thumbnails de videos
+   - Generación de placeholders
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Configuración del Ambiente de Desarrollo
 
-## Deploy on Vercel
+### Instalación
+```bash
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Scripts Disponibles
+```bash
+npm run dev          # Desarrollo con Turbopack
+npm run build       # Compilación para producción
+npm run start       # Iniciar servidor de producción
+npm run lint        # Ejecutar linter
+npm run optimize-media  # Optimizar archivos multimedia
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### Variables de Entorno
+Crear archivo `.env.local`:
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+## Deployment
+
+### Configuración Actual
+- **Plataforma:** Vercel
+- **Rama principal:** master
+- **URL de producción:** [abogadosonlineecuador.com](https://abogadosonlineecuador.com)
+
+### Proceso de Deployment
+1. Push a la rama master
+2. Vercel detecta cambios automáticamente
+3. Ejecuta build y tests
+4. Deploy automático si los tests pasan
+
+### Optimizaciones de Producción
+- Compresión de imágenes automática
+- Minificación de JS/CSS
+- Caching agresivo de assets estáticos
+
+## Seguridad
+
+### Protección de Datos
+- Validación de inputs
+- Sanitización de datos
+- Rate limiting en APIs
+
+### Mejores Prácticas
+- CSP Headers
+- HTTPS forzado
+- Prevención de XSS
+- Sanitización de inputs
+
+## Mantenimiento
+
+### Actualizaciones Recomendadas
+- Actualizar dependencias mensualmente
+- Revisar vulnerabilidades con `npm audit`
+- Mantener Next.js actualizado
+
+### Monitoreo
+- Vercel Analytics
+- Error tracking
+- Performance monitoring
+
+## Optimizaciones de Rendimiento
+
+### Media
+- Lazy loading de imágenes
+- Formatos modernos (WebP, AVIF)
+- Videos optimizados para móvil
+
+### Frontend
+- Code splitting automático
+- Prefetching de rutas
+- Optimización de bundle size
+
+## Contacto y Soporte
+
+Para soporte técnico o consultas sobre el desarrollo:
+- **Email:** [contacto@abogadosonlineecuador.com](mailto:contacto@abogadosonlineecuador.com)
+- **WhatsApp:** +593 97 931 7579
+
+---
+
+© 2024 Abogados Online Ecuador. Todos los derechos reservados.

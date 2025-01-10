@@ -4,9 +4,14 @@ import Image from 'next/image';
 import { Phone, Mail, MapPin, Clock, Calendar } from 'lucide-react';
 import NotaryCalculator from '../components/NotaryCalculator';
 import AppointmentForm from '../components/AppointmentForm';
+import ScrollProgress from '../components/ScrollProgress';
+import WhatsAppButton from '../components/WhatsAppButton';
+import HeroSection from '../components/HeroSection';
+import Header from '../components/Header';
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
@@ -20,89 +25,19 @@ const Home = () => {
         <meta property="og:url" content="https://abogadosonlineecuador.com" />
       </Head>
 
-      {/* Barra superior de contacto */}
-      <div className="bg-blue-900 text-white py-2">
-        <div className="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <MapPin className="w-4 h-4 mr-2" />
-              <span>Quito, Ecuador</span>
-            </div>
-            <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
-              <span>Lun - Vie: 9:00 AM - 6:00 PM</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <Phone className="w-4 h-4 mr-2" />
-              <span>+593 XX XXX XXXX</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <main className="min-h-screen bg-white">
-        {/* Barra de navegación */}
-        <nav className="bg-white border-b sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div className="flex items-center">
-              <Image 
-                src="/brand/Logo horizontal.png"
-                alt="Abogados Online Ecuador Logo"
-                width={200}
-                height={50}
-                className="h-12 w-auto"
-              />
-            </div>
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="#servicios" className="text-gray-600 hover:text-blue-900 transition">Servicios</a>
-              <a href="#calculadora" className="text-gray-600 hover:text-blue-900 transition">Calculadora</a>
-              <a href="#contacto" className="text-gray-600 hover:text-blue-900 transition">Contacto</a>
-              <button 
-                onClick={() => setShowForm(true)}
-                className="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition flex items-center"
-              >
-                <Calendar className="w-5 h-5 mr-2" />
-                Agendar Cita
-              </button>
-            </div>
-          </div>
-        </nav>
+      <main className="min-h-screen bg-white relative">
+        <ScrollProgress />
+        <Header onShowForm={() => setShowForm(true)} />
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-24">
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              RAPIDEZ, COMPROMISO Y PROFESIONALIDAD
-            </h1>
-            <p className="text-xl mb-12 max-w-2xl mx-auto">
-              Simplificamos tus trámites notariales con asesoría profesional y calculadora de costos en tiempo real
-            </p>
-            <div className="flex flex-col md:flex-row justify-center gap-4">
-              <a 
-                href="#calculadora"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 inline-flex items-center justify-center"
-              >
-                Calcular Costos Notariales
-              </a>
-              <button
-                onClick={() => setShowForm(true)}
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition duration-300 inline-flex items-center justify-center"
-              >
-                <Calendar className="w-5 h-5 mr-2" />
-                Agendar Cita
-              </button>
-            </div>
-          </div>
-        </section>
+        <HeroSection />
 
         {/* Sección de Valores */}
         <section className="py-20 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="text-center">
-                <div className="bg-blue-900 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -111,7 +46,7 @@ const Home = () => {
                 <p className="text-gray-600">Respaldados por años de experiencia y conocimiento profundo en trámites notariales.</p>
               </div>
               <div className="text-center">
-                <div className="bg-blue-900 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -120,7 +55,7 @@ const Home = () => {
                 <p className="text-gray-600">Optimizamos cada proceso para brindarte el servicio más rápido sin comprometer la calidad.</p>
               </div>
               <div className="text-center">
-                <div className="bg-blue-900 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -154,9 +89,9 @@ const Home = () => {
                   icon: "✍️"
                 },
                 {
-                  title: "Reconocimiento de Firmas",
-                  description: "Validación legal de firmas para documentos oficiales",
-                  icon: "✒️"
+                  title: "Promesa de Compraventa",
+                  description: "Elaboración y gestión de promesas de compraventa de bienes inmuebles",
+                  icon: "📝"
                 },
                 {
                   title: "Contratos de Arrendamiento",
@@ -193,28 +128,28 @@ const Home = () => {
             <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <Phone className="w-6 h-6 text-blue-900" />
+                  <Phone className="w-6 h-6 text-blue-600" />
                   <div>
                     <h3 className="font-semibold">Teléfono</h3>
                     <p>+593 XX XXX XXXX</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6 text-blue-900" />
+                  <Mail className="w-6 h-6 text-blue-600" />
                   <div>
                     <h3 className="font-semibold">Correo Electrónico</h3>
                     <p>contacto@abogadosonlineecuador.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <MapPin className="w-6 h-6 text-blue-900" />
+                  <MapPin className="w-6 h-6 text-blue-600" />
                   <div>
                     <h3 className="font-semibold">Dirección</h3>
                     <p>Quito, Ecuador</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Clock className="w-6 h-6 text-blue-900" />
+                  <Clock className="w-6 h-6 text-blue-600" />
                   <div>
                     <h3 className="font-semibold">Horario de Atención</h3>
                     <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
@@ -268,18 +203,21 @@ const Home = () => {
           </div>
         </footer>
 
-        {/* Formulario flotante y botón */}
-        {showForm ? (
-          <AppointmentForm onClose={() => setShowForm(false)} />
-        ) : (
+        {/* Formulario flotante */}
+        {showForm && <AppointmentForm onClose={() => setShowForm(false)} />}
+
+        {/* Botones flotantes */}
+        <div className="floating-buttons">
           <button
             onClick={() => setShowForm(true)}
-            className="fixed bottom-4 right-4 z-50 bg-blue-900 text-white p-4 rounded-full shadow-lg hover:bg-blue-800 transition-all duration-300 flex items-center gap-2"
+            className="appointment-button"
+            aria-label="Agendar cita"
           >
             <Calendar className="w-6 h-6" />
-            <span className="hidden md:inline">Agendar Cita</span>
+            <span>Agendar Cita</span>
           </button>
-        )}
+          <WhatsAppButton phoneNumber="593XXXXXXXXX" />
+        </div>
       </main>
     </>
   );

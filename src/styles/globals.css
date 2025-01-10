@@ -1,63 +1,409 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Inter:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary-color: #0066cc;
-  --secondary-color: #004d99;
-  --accent-color: #ff9900;
-  --text-color: #333333;
-  --background-color: #f5f5f5;
+  --primary: #2563EB;
+  --secondary: #1E40AF;
+  --accent: #EAB308;
+  --background: #F8FAFC;
+  --text: #1F2937;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.calculator-numbers {
-  font-family: 'Roboto', sans-serif;
+/* Efectos visuales */
+.bg-radial-gradient {
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 }
 
-.header-logo {
-  height: 60px;
-  width: auto;
+/* Animaciones para el video de fondo y contenido */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Optimizaciones para dispositivos móviles */
+@media (max-width: 768px) {
+  .video-optimized {
+    transform: scale(1.2);
+    transform-origin: center center;
+  }
+  
+  .animate-fade-in {
+    animation-duration: 0.6s; /* Animaciones más rápidas en móvil */
+  }
+}
+
+/* Optimizaciones de rendimiento */
+.performance-improvements {
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Mejoras en la carga progresiva */
+.progressive-load {
+  transition: opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+.progressive-load.loaded {
+  opacity: 1;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientAnimation 3s ease infinite;
+}
+
+/* Optimizaciones de rendimiento para video */
+.video-optimized {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  perspective: 1000;
+  will-change: transform, opacity;
+  
+  /* Mejoras en el rendimiento del video */
+  object-fit: cover;
+  font-family: 'object-fit: cover'; /* Fallback para IE/Edge */
+  
+  /* Optimizaciones adicionales */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Estilos específicos para el video de fondo */
+.video-container {
+  @apply relative w-full h-full overflow-hidden;
+  min-height: 100vh;
+}
+
+.video-background {
+  @apply absolute inset-0 w-full h-full object-cover;
+  min-height: 100%;
+  min-width: 100%;
+  filter: brightness(0.8) contrast(1.1);
+  transform-origin: center center;
+  transition: opacity 1s ease-out, transform 0.3s ease-out;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .video-background {
+    transform: scale(1.2);
+    object-position: center 20%;
+  }
+}
+
+/* Overlay para el video */
+.video-overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Contenido sobre el video */
+.video-content {
+  @apply relative z-10;
+}
+
+/* Mejoras en la interactividad */
+.interactive-element {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.interactive-element:active {
+  transform: scale(0.98);
+}
+
+/* Animación de carga */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.bg-texture {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23FFFFFF' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+}
+
+/* Animaciones de fondo */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+/* Efectos de hover mejorados */
+.hover-lift {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Efectos de transición suaves */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efectos de carga */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Animaciones y transiciones */
+.hover-scale {
+  @apply transition-transform duration-300;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Componentes comunes */
 .btn {
-  @apply px-4 py-2 rounded-lg font-medium transition-colors;
-  background-color: var(--primary-color);
-  color: white;
-  font-family: 'Inter', sans-serif;
+  @apply px-6 py-3 rounded font-medium transition-all duration-300;
 }
 
-.btn:hover {
-  background-color: var(--secondary-color);
+.btn-primary {
+  @apply bg-primary text-white hover:bg-secondary;
 }
 
-.input-field {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-  font-family: 'Roboto', sans-serif;
-}
-
-.select-field {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-  font-family: 'Inter', sans-serif;
+.btn-outline {
+  @apply border-2 border-white text-white hover:bg-white hover:text-primary;
 }
 
 .card {
-  @apply bg-white p-6 rounded-lg shadow-sm;
+  @apply bg-white rounded-lg shadow-subtle hover:shadow-hover transition-shadow duration-300;
 }
 
-/* Estilos específicos para números y montos */
-.amount {
-  font-family: 'Roboto', sans-serif;
-  font-feature-settings: "tnum" on, "lnum" on;
+/* Scroll Progress Bar */
+.scroll-progress {
+  @apply fixed top-0 left-0 h-1 bg-accent z-50;
+  width: var(--scroll-width, 0%);
+}
+
+/* Botones flotantes */
+.floating-buttons {
+  @apply fixed z-50 flex flex-row gap-3;
+  right: max(1rem, env(safe-area-inset-right, 1rem));
+  bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
+}
+
+@media (min-width: 768px) {
+  .floating-buttons {
+    right: 2rem;
+    bottom: 2rem;
+    gap: 1rem;
+  }
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+  @apply w-12 h-12 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300;
+  filter: drop-shadow(0 4px 8px rgba(37, 211, 102, 0.3));
+}
+
+.whatsapp-button:hover {
+  filter: drop-shadow(0 8px 16px rgba(37, 211, 102, 0.4));
+  transform: translateY(-2px) scale(1.1);
+}
+
+.whatsapp-button svg {
+  @apply w-6 h-6;
+}
+
+@media (min-width: 768px) {
+  .whatsapp-button {
+    @apply w-14 h-14;
+  }
+  
+  .whatsapp-button svg {
+    @apply w-7 h-7;
+  }
+}
+
+/* Appointment Button */
+.appointment-button {
+  @apply h-12 px-4 bg-primary rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.appointment-button:hover {
+  @apply bg-secondary;
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.appointment-button svg {
+  @apply w-5 h-5;
+}
+
+.appointment-button span {
+  @apply ml-2 text-sm whitespace-nowrap;
+}
+
+@media (min-width: 768px) {
+  .appointment-button {
+    @apply h-14 px-6;
+  }
+  
+  .appointment-button svg {
+    @apply w-6 h-6;
+  }
+  
+  .appointment-button span {
+    @apply text-base;
+  }
+}
+
+/* Mega Menu */
+.mega-menu {
+  @apply absolute left-0 w-full bg-white shadow-lg py-8 px-4 hidden group-hover:block z-50;
+}
+
+/* Mobile Menu */
+.hamburger {
+  @apply w-6 h-6 flex flex-col justify-between md:hidden;
+}
+
+.hamburger span {
+  @apply w-full h-0.5 bg-text transition-all duration-300;
+}
+
+.hamburger.active span:first-child {
+  @apply transform rotate-45 translate-y-2;
+}
+
+.hamburger.active span:nth-child(2) {
+  @apply opacity-0;
+}
+
+.hamburger.active span:last-child {
+  @apply transform -rotate-45 -translate-y-2;
+}
+
+/* Tooltips */
+.tooltip {
+  @apply relative inline-block;
+}
+
+.tooltip-text {
+  @apply absolute invisible opacity-0 bg-text text-white text-sm py-2 px-4 rounded bottom-full left-1/2 transform -translate-x-1/2 -translate-y-2 transition-all duration-300;
+}
+
+.tooltip:hover .tooltip-text {
+  @apply visible opacity-100;
+}
+
+/* Progress Bar */
+.progress-bar {
+  @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full bg-primary transition-all duration-300;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  @apply flex items-center space-x-2 text-sm text-gray-500;
+}
+
+.breadcrumb-item {
+  @apply hover:text-primary transition-colors;
+}
+
+.breadcrumb-separator {
+  @apply text-gray-400;
 }
