@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
   const faqs = [
     {
       question: "¿Qué documentos necesito para realizar un trámite notarial?",
@@ -12,7 +14,7 @@ const FAQ = () => {
     },
     {
       question: "¿Existen descuentos o exenciones en los trámites notariales?",
-      answer: "Sí, existen descuentos especiales para ciertos grupos:\n\n- Adultos mayores: 50% de descuento en trámites bilaterales y 100% en unilaterales\n- Personas con discapacidad: 50% de descuento en trámites bilaterales y 100% en unilaterales\n- Vivienda de interés social: 25% de descuento en trámites hasta $60,000"
+      answer: "Sí, pueden aplicar descuentos especiales según el tipo de trámite y las características del usuario. Consulte en la notaría si su caso califica para algún descuento o exención."
     },
     {
       question: "¿Puedo realizar trámites notariales en línea?",
@@ -32,20 +34,45 @@ const FAQ = () => {
     }
   ];
 
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div className="container mx-auto px-4">
       <h2 className="text-3xl font-bold text-center mb-12">
         Preguntas Frecuentes
       </h2>
-      <div className="max-w-3xl mx-auto space-y-8">
+      <div className="max-w-3xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              {faq.question}
-            </h3>
-            <p className="text-gray-600 whitespace-pre-line">
-              {faq.answer}
-            </p>
+          <div 
+            key={index} 
+            className="bg-white rounded-lg shadow-sm overflow-hidden"
+          >
+            <button
+              className="w-full text-left p-6 focus:outline-none hover:bg-gray-50 transition-colors duration-200"
+              onClick={() => toggleFAQ(index)}
+            >
+              <div className="flex justify-between items-center">
+                <h3 className="text-xl font-semibold text-gray-900 pr-8">
+                  {faq.question}
+                </h3>
+                <span className={`transform transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
+              </div>
+            </button>
+            <div 
+              className={`transition-all duration-300 ease-in-out ${
+                openIndex === index 
+                  ? 'max-h-96 opacity-100' 
+                  : 'max-h-0 opacity-0'
+              } overflow-hidden`}
+            >
+              <p className="text-lg text-gray-600 p-6 pt-0 whitespace-pre-line">
+                {faq.answer}
+              </p>
+            </div>
           </div>
         ))}
       </div>

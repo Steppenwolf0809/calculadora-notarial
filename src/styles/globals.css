@@ -19,13 +19,10 @@
 
   .input-field {
     @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 text-base transition-colors duration-200;
-    -moz-appearance: textfield;
   }
 
-  .input-field::-webkit-outer-spin-button,
-  .input-field::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  .input-field[type="number"] {
+    @apply pr-8;
   }
 
   .calculator-numbers {

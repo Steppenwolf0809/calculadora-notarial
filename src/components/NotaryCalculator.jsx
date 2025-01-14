@@ -14,7 +14,9 @@ const TIPOS_SERVICIO = {
   DIVORCIO: 'divorcio',
   UNION_HECHO: 'union_hecho',
   AUTORIZACION_VIAJE: 'autorizacion_viaje',
-  RECONOCIMIENTO_FIRMA: 'reconocimiento_firma'
+  RECONOCIMIENTO_FIRMA: 'reconocimiento_firma',
+  COPIA_CERTIFICADA: 'copia_certificada',
+  MATERIALIZACION: 'materializacion'
 };
 
 const SERVICIOS_INDETERMINADOS = {
@@ -51,6 +53,14 @@ const SERVICIOS_INDETERMINADOS = {
   reconocimiento_firma: {
     nombre: "Reconocimiento de Firma",
     tarifa: tarifas.serviciosIndeterminados.reconocimientoFirma.tarifa
+  },
+  copia_certificada: {
+    nombre: "Copia Certificada",
+    tarifa: tarifas.serviciosIndeterminados.copiaCertificada.tarifa
+  },
+  materializacion: {
+    nombre: "Materialización",
+    tarifa: tarifas.serviciosIndeterminados.materializacion.tarifa
   }
 };
 
@@ -58,6 +68,9 @@ const NotaryCalculator = () => {
   const [tipoServicio, setTipoServicio] = useState(TIPOS_SERVICIO.TRANSFERENCIA);
   const [monto, setMonto] = useState('');
   const [otorgantes, setOtorgantes] = useState(1);
+  const [numeroFirmas, setNumeroFirmas] = useState(1);
+  const [numeroMenores, setNumeroMenores] = useState(1);
+  const [numeroHojas, setNumeroHojas] = useState(1);
   const [resultado, setResultado] = useState(null);
 
   const esServicioIndeterminado = () => {
@@ -68,7 +81,14 @@ const NotaryCalculator = () => {
     const servicio = SERVICIOS_INDETERMINADOS[tipoServicio];
     let subtotal = servicio.tarifa;
 
-    if (servicio.otorganteAdicional && otorgantes > 1) {
+    if (tipoServicio === TIPOS_SERVICIO.RECONOCIMIENTO_FIRMA) {
+      subtotal = servicio.tarifa * numeroFirmas;
+    } else if (tipoServicio === TIPOS_SERVICIO.AUTORIZACION_VIAJE) {
+      subtotal = servicio.tarifa * numeroMenores;
+    } else if (tipoServicio === TIPOS_SERVICIO.COPIA_CERTIFICADA || 
+               tipoServicio === TIPOS_SERVICIO.MATERIALIZACION) {
+      subtotal = servicio.tarifa * numeroHojas;
+    } else if (servicio.otorganteAdicional && otorgantes > 1) {
       subtotal += servicio.otorganteAdicional * (otorgantes - 1);
     }
 
@@ -125,7 +145,7 @@ const NotaryCalculator = () => {
     if (esServicioIndeterminado() || monto) {
       calcularTotal();
     }
-  }, [monto, tipoServicio, otorgantes]);
+  }, [monto, tipoServicio, otorgantes, numeroFirmas, numeroMenores, numeroHojas]);
 
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
@@ -142,19 +162,21 @@ const NotaryCalculator = () => {
           >
             <optgroup label="Servicios con Cuantía">
               <option value={TIPOS_SERVICIO.TRANSFERENCIA}>Transferencia de Dominio</option>
-              <option value={TIPOS_SERVICIO.HIPOTECA}>Hipoteca</option>
               <option value={TIPOS_SERVICIO.PROMESA}>Promesa de Compraventa</option>
+              <option value={TIPOS_SERVICIO.HIPOTECA}>Hipoteca</option>
               <option value={TIPOS_SERVICIO.ARRIENDO}>Contrato de Arrendamiento</option>
             </optgroup>
             <optgroup label="Servicios sin Cuantía">
+              <option value={TIPOS_SERVICIO.RECONOCIMIENTO_FIRMA}>Reconocimiento de Firma</option>
+              <option value={TIPOS_SERVICIO.DECLARACION}>Declaración Juramentada</option>
+              <option value={TIPOS_SERVICIO.COPIA_CERTIFICADA}>Copia Certificada</option>
               <option value={TIPOS_SERVICIO.PODER_NATURAL}>Poder (Persona Natural)</option>
               <option value={TIPOS_SERVICIO.PODER_JURIDICO}>Poder (Persona Jurídica)</option>
-              <option value={TIPOS_SERVICIO.DECLARACION}>Declaración Juramentada</option>
-              <option value={TIPOS_SERVICIO.TESTAMENTO}>Testamento</option>
+              <option value={TIPOS_SERVICIO.AUTORIZACION_VIAJE}>Autorización de Viaje</option>
+              <option value={TIPOS_SERVICIO.MATERIALIZACION}>Materialización</option>
               <option value={TIPOS_SERVICIO.DIVORCIO}>Divorcio</option>
               <option value={TIPOS_SERVICIO.UNION_HECHO}>Unión de Hecho</option>
-              <option value={TIPOS_SERVICIO.AUTORIZACION_VIAJE}>Autorización de Viaje</option>
-              <option value={TIPOS_SERVICIO.RECONOCIMIENTO_FIRMA}>Reconocimiento de Firma</option>
+              <option value={TIPOS_SERVICIO.TESTAMENTO}>Testamento</option>
             </optgroup>
           </select>
         </div>
@@ -180,7 +202,7 @@ const NotaryCalculator = () => {
           </div>
         )}
 
-        {/* Otorgantes (solo para servicios que lo requieren) */}
+        {/* Campos adicionales según el tipo de servicio */}
         {(tipoServicio === TIPOS_SERVICIO.PODER_NATURAL ||
           tipoServicio === TIPOS_SERVICIO.DECLARACION) && (
           <div className="max-w-2xl mx-auto">
@@ -191,9 +213,70 @@ const NotaryCalculator = () => {
               type="number"
               className="input-field"
               value={otorgantes}
-              onChange={(e) => setOtorgantes(parseInt(e.target.value) || 1)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setOtorgantes(value === '' ? 1 : parseInt(value) || 1);
+              }}
               min="1"
               placeholder="Número de otorgantes"
+            />
+          </div>
+        )}
+
+        {tipoServicio === TIPOS_SERVICIO.RECONOCIMIENTO_FIRMA && (
+          <div className="max-w-2xl mx-auto">
+            <label className="block text-base font-medium text-gray-700 mb-3">
+              Número de Firmas
+            </label>
+            <input
+              type="number"
+              className="input-field"
+              value={numeroFirmas}
+              onChange={(e) => {
+                const value = e.target.value;
+                setNumeroFirmas(value === '' ? 1 : parseInt(value) || 1);
+              }}
+              min="1"
+              placeholder="Número de firmas a reconocer"
+            />
+          </div>
+        )}
+
+        {(tipoServicio === TIPOS_SERVICIO.COPIA_CERTIFICADA ||
+          tipoServicio === TIPOS_SERVICIO.MATERIALIZACION) && (
+          <div className="max-w-2xl mx-auto">
+            <label className="block text-base font-medium text-gray-700 mb-3">
+              Número de Hojas
+            </label>
+            <input
+              type="number"
+              className="input-field"
+              value={numeroHojas}
+              onChange={(e) => {
+                const value = e.target.value;
+                setNumeroHojas(value === '' ? 1 : parseInt(value) || 1);
+              }}
+              min="1"
+              placeholder="Número de hojas"
+            />
+          </div>
+        )}
+
+        {tipoServicio === TIPOS_SERVICIO.AUTORIZACION_VIAJE && (
+          <div className="max-w-2xl mx-auto">
+            <label className="block text-base font-medium text-gray-700 mb-3">
+              Número de Menores
+            </label>
+            <input
+              type="number"
+              className="input-field"
+              value={numeroMenores}
+              onChange={(e) => {
+                const value = e.target.value;
+                setNumeroMenores(value === '' ? 1 : parseInt(value) || 1);
+              }}
+              min="1"
+              placeholder="Número de menores que viajan"
             />
           </div>
         )}
