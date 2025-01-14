@@ -13,16 +13,23 @@
 }
 
 @layer components {
-  .input-field {
-    @apply w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600;
-  }
-
   .select-field {
-    @apply w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600;
+    @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 text-base transition-colors duration-200;
   }
 
-  .form-input {
-    @apply w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600;
+  .input-field {
+    @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 text-base transition-colors duration-200;
+    -moz-appearance: textfield;
+  }
+
+  .input-field::-webkit-outer-spin-button,
+  .input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .calculator-numbers {
+    @apply font-mono text-lg tabular-nums;
   }
 }
 

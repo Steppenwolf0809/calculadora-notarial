@@ -128,11 +128,11 @@ const NotaryCalculator = () => {
   }, [monto, tipoServicio, otorgantes]);
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
-      <div className="space-y-6">
+    <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+      <div className="space-y-8">
         {/* Tipo de Servicio */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="max-w-2xl mx-auto">
+            <label className="block text-base font-medium text-gray-700 mb-3">
             Tipo de Servicio
           </label>
           <select
@@ -161,27 +161,30 @@ const NotaryCalculator = () => {
 
         {/* Monto (solo para servicios con cuantía) */}
         {!esServicioIndeterminado() && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="max-w-2xl mx-auto">
+            <label className="block text-base font-medium text-gray-700 mb-3">
               {tipoServicio === TIPOS_SERVICIO.ARRIENDO ? 'Canon Mensual' : 'Monto'}
             </label>
-            <input
-              type="number"
-              className="input-field"
-              value={monto}
-              onChange={(e) => setMonto(e.target.value)}
-              min="0"
-              step="0.01"
-              placeholder={tipoServicio === TIPOS_SERVICIO.ARRIENDO ? 'Ingrese el canon mensual' : 'Ingrese el monto'}
-            />
+            <div className="relative flex items-center">
+              <span className="absolute left-4 text-gray-500 text-lg">$</span>
+              <input
+                type="number"
+                className="input-field pl-8"
+                value={monto}
+                onChange={(e) => setMonto(e.target.value)}
+                min="0"
+                step="0.01"
+                placeholder={tipoServicio === TIPOS_SERVICIO.ARRIENDO ? 'Ingrese el canon mensual' : 'Ingrese el monto'}
+              />
+            </div>
           </div>
         )}
 
         {/* Otorgantes (solo para servicios que lo requieren) */}
         {(tipoServicio === TIPOS_SERVICIO.PODER_NATURAL ||
           tipoServicio === TIPOS_SERVICIO.DECLARACION) && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="max-w-2xl mx-auto">
+            <label className="block text-base font-medium text-gray-700 mb-3">
               Número de Otorgantes
             </label>
             <input
@@ -196,28 +199,28 @@ const NotaryCalculator = () => {
         )}
 
         {/* Resultados y Requisitos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           {resultado && (
-            <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Resultado</h3>
+            <div className="p-8 bg-gray-50 rounded-xl shadow-sm">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6">Resultado</h3>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-gray-200">
+                <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="text-gray-600">Subtotal:</span>
-                  <span className="font-medium calculator-numbers">${resultado.subtotal}</span>
+                  <span className="font-medium calculator-numbers text-xl">${resultado.subtotal}</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-200">
+                <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="text-gray-600">IVA (15%):</span>
-                  <span className="font-medium calculator-numbers">${resultado.iva}</span>
+                  <span className="font-medium calculator-numbers text-xl">${resultado.iva}</span>
                 </div>
-                <div className="flex justify-between items-center pt-2 text-lg">
+                <div className="flex justify-between items-center pt-3 text-lg">
                   <span className="font-semibold text-gray-800">Total:</span>
-                  <span className="font-bold text-blue-600 calculator-numbers">${resultado.total}</span>
+                  <span className="font-bold text-blue-600 calculator-numbers text-2xl">${resultado.total}</span>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
+          <div className="p-8 bg-gray-50 rounded-xl shadow-sm">
             <RequisitosServicio tramiteId={tipoServicio} />
           </div>
         </div>

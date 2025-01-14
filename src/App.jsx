@@ -19,10 +19,8 @@ function App() {
       <main className="min-h-screen bg-white pt-16">
         <HeroSection onShowForm={() => setShowForm(true)} />
         
-        <ServicesSection />
-        
-        <section id="calculadora" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
+        <section id="calculadora" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 max-w-5xl">
             <h2 className="text-3xl font-bold text-center mb-12">
               Calculadora de Costos Notariales
             </h2>
@@ -30,7 +28,11 @@ function App() {
           </div>
         </section>
 
-        <section id="faq" className="py-20 bg-white">
+        <section id="servicios" className="py-16 bg-white">
+          <ServicesSection />
+        </section>
+
+        <section id="faq" className="py-16 bg-gray-50">
           <FAQ />
         </section>
 
@@ -60,6 +62,7 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
               <ul className="text-sm space-y-2">
+                <li><a href="#servicios" className="hover:text-accent transition-colors">Servicios</a></li>
                 <li><a href="#calculadora" className="hover:text-accent transition-colors">Calculadora</a></li>
                 <li><a href="#faq" className="hover:text-accent transition-colors">Preguntas Frecuentes</a></li>
               </ul>
