@@ -1,62 +1,79 @@
-import { useState } from 'react'
-import Calculadora from './components/Calculadora'
-import Certificaciones from './components/Certificaciones'
-import Requisitos from './components/Requisitos'
-
-const TABS = {
-  CALCULADORA: 'calculadora',
-  CERTIFICACIONES: 'certificaciones',
-  REQUISITOS: 'requisitos'
-};
+import React, { useState } from 'react';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import ServicesSection from './components/ServicesSection';
+import NotaryCalculator from './components/NotaryCalculator';
+import FAQ from './components/FAQ';
+import WhatsAppButton from './components/WhatsAppButton';
+import ScrollProgress from './components/ScrollProgress';
+import AppointmentForm from './components/AppointmentForm';
 
 function App() {
-  const [tabActiva, setTabActiva] = useState(TABS.CALCULADORA);
-
-  const TabButton = ({ tab, label }) => (
-    <button
-      className={`px-4 py-2 font-medium rounded-t-lg transition-colors ${
-        tabActiva === tab
-          ? 'bg-white text-blue-600 border-t border-x border-gray-200'
-          : 'text-gray-600 hover:text-blue-600'
-      }`}
-      onClick={() => setTabActiva(tab)}
-    >
-      {label}
-    </button>
-  );
+  const [showForm, setShowForm] = useState(false);
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Calculadora Notarial
-          </h1>
-          <p className="mt-2 text-gray-600">
-            Tarifas vigentes 2025
-          </p>
-        </header>
+    <>
+      <ScrollProgress />
+      <Header onShowForm={() => setShowForm(true)} />
 
-        {/* Tabs */}
-        <div className="flex justify-center space-x-4 mb-6">
-          <TabButton tab={TABS.CALCULADORA} label="Calculadora" />
-          <TabButton tab={TABS.CERTIFICACIONES} label="Certificaciones" />
-          <TabButton tab={TABS.REQUISITOS} label="Requisitos" />
-        </div>
+      <main className="min-h-screen bg-white pt-16">
+        <HeroSection onShowForm={() => setShowForm(true)} />
         
-        {/* Contenido */}
-        <div className="max-w-4xl mx-auto">
-          {tabActiva === TABS.CALCULADORA && <Calculadora />}
-          {tabActiva === TABS.CERTIFICACIONES && <Certificaciones />}
-          {tabActiva === TABS.REQUISITOS && <Requisitos />}
-        </div>
+        <ServicesSection />
         
-        <footer className="mt-12 text-center text-sm text-gray-500">
-          <p>Los valores mostrados son referenciales y pueden variar según el caso específico.</p>
-        </footer>
-      </div>
-    </main>
-  )
+        <section id="calculadora" className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Calculadora de Costos Notariales
+            </h2>
+            <NotaryCalculator />
+          </div>
+        </section>
+
+        <section id="faq" className="py-20 bg-white">
+          <FAQ />
+        </section>
+
+        <WhatsAppButton />
+
+        {showForm && <AppointmentForm onClose={() => setShowForm(false)} />}
+      </main>
+
+      <footer className="bg-primary text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+              <p className="text-sm">
+                Quito, Ecuador<br />
+                +593 99 999 9999<br />
+                info@abogadosonlineecuador.com
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Horario de Atención</h3>
+              <p className="text-sm">
+                Lunes a Viernes<br />
+                8:00 AM - 6:00 PM
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+              <ul className="text-sm space-y-2">
+                <li><a href="#calculadora" className="hover:text-accent transition-colors">Calculadora</a></li>
+                <li><a href="#faq" className="hover:text-accent transition-colors">Preguntas Frecuentes</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8">
+            <p className="text-sm">
+              © {new Date().getFullYear()} Abogados Online Ecuador. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
 }
 
-export default App
+export default App;

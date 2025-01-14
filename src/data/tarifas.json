@@ -67,6 +67,15 @@
           "porcentajeExcedente": 0.001
         }
       }
+    },
+    "contratos_arriendo": {
+      "rangos": [
+        {"min": 0, "max": 375, "tarifa": 47.00},
+        {"min": 375.01, "max": 1500, "tarifa": 47.00},
+        {"min": 1501, "max": 5000, "tarifa": 70.50},
+        {"min": 5001, "max": 10000, "tarifa": 94.00},
+        {"min": 10001, "max": 999999999, "tarifa": 141.00}
+      ]
     }
   },
   "serviciosIndeterminados": {
@@ -84,19 +93,5 @@
     "testamentoCerrado": {"tarifa": 470.00},
     "unionHecho": {"tarifa": 47.00},
     "disolucionSociedadConyugal": {"tarifa": 159.80}
-  },
-  "descuentos": {
-    "viviendaSocial": {
-      "aplicaHasta": 60000,
-      "porcentaje": 0.25
-    },
-    "adultoMayor": {
-      "unilaterales": 1.00,
-      "bilaterales": 0.50
-    },
-    "discapacidad": {
-      "unilaterales": 1.00,
-      "bilaterales": 0.50
-    }
   }
 }
